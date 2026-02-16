@@ -1,0 +1,36 @@
+<span style="display: inline; background: yellow;">
+  Inline Element
+</span>
+<span style="display: inline; background: orange;">
+  Another Inline
+</span>
+<div style="display: flex; background: lightgray;">
+  <div style="margin: 5px; padding: 10px; background: red;">Item 1</div>
+  <div style="margin: 5px; padding: 10px; background: green;">Item 2</div>
+  <div style="margin: 5px; padding: 10px; background: blue;">Item 3</div>
+</div>
+<div style="display: block; background: lightblue; width: 200px;">
+  Block Element
+  <div style="margin: 5px; padding: 10px; background: red;">Item 1</div>
+</div>
+<style>
+.parent {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background: lightblue;
+}
+
+.child {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: 100px;
+  height: 100px;
+  background: pink;
+}
+</style>
+
+<div class="parent">
+  <div class="child">Absolute</div>
+</div>

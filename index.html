@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>Portfolio</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    rel="stylesheet"
+  />
+  
+  <style>
+    
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
+    body {
+      font-family: "Inter", sans-serif;
+    }
+    /* === 🌧️ Full-Screen Bubble Rain Animation === */
+.bubbles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.bubble {
+  position: absolute;
+  top: -10px;
+  background: rgba(0, 255, 255, 0.5);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+  animation: fall 8s linear infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) scale(0.5);
+    opacity: 0;
+  }
+}
+
+    /* Button animation */
+    @keyframes slideTop {
+      0% {
+        opacity: 0;
+        transform: translateY(25px);
+        box-shadow: 0 0 0px #00efff;
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+        box-shadow: 0 0 5px #00efff;
+      }
+    }
+    .btn-box {
+      display: inline-block;
+      padding: 12px 28px;
+      background: #00efff;
+      border-radius: 40px;
+      font-size: 14px;
+      color: #001b29;
+      letter-spacing: 1px;
+      text-decoration: none;
+      font-weight: 600;
+      opacity: 0;
+      animation: slideTop 1s ease forwards;
+      animation-delay: 2s;
+      box-shadow: 0 0 5px #00efff, 0 0 25px #00efff;
+      transition: box-shadow 0.3s ease, background-color 0.3s ease,
+        color 0.3s ease;
+      cursor: pointer;
+    }
+    .btn-box:hover {
+      box-shadow: 0 0 5px cyan, 0 0 25px cyan, 0 0 100px cyan, 0 0 200px cyan;
+      background-color: #00c8d8;
+      color: #000814;
+      
+    }
+    nav a:hover {
+      color: #00efff;
+      text-decoration: underline;
+      transition: color 0.3s ease;
+    }
+    .social-icon {
+      transition: color 0.3s ease, transform 0.3s ease;
+      cursor: pointer;
+    }
+    .social-icon:hover {
+      color: #00efff;
+      transform: scale(1.2);
+    }
+    .profile-container:hover .glow {
+      box-shadow: 0 0 60px 15px #00efff, 0 0 90px 30px #d400ff;
+      transition: box-shadow 0.4s ease;
+    }
+    .nav-left {
+      font-weight: 700;
+    }
+    .nav-right {
+      margin-left: 60%;
+      display: flex;
+      gap: 1.5rem;
+      font-weight: 600;
+    }
+    #about h2,
+    #skills h2 {
+      color: #00efff;
+    }
+    #about p {
+      color: white !important;
+      
+    }
+    #skills {
+      background-color: #071422;
+      width: 20%;
+      
+    }
+    .skill-item {
+      display:flex;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 1.5rem;
+      background: #0f1f33;
+      padding: 12px 16px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6),
+        inset 0 2px 4px rgba(255, 255, 255, 0.1);
+      transition: box-shadow 0.3s ease;
+    }
+    .skill-item:hover {
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.9),
+        inset 0 4px 8px rgba(255, 255, 255, 0.2);
+    }
+    .skill-icon {
+      width: 56px;
+      height: 56px;
+      flex-shrink: 0;
+      border-radius: 12px;
+      background: white;
+      padding: 6px;
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4),
+        inset 0 -6px 10px rgba(255, 255, 255, 0.7);
+      filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.4))
+        drop-shadow(0 0 5px rgba(255, 255, 255, 0.6));
+      transition: transform 0.3s ease;
+    }
+    .skill-icon:hover {
+      transform: translateY(-5px) scale(1.1);
+      filter:
+        drop-shadow(0 6px 5px rgba(0, 0, 0, 0.6))
+        drop-shadow(0 0 10px rgba(255, 255, 255, 0.9));
+      z-index: 10;
+    }
+    .skill-name {
+      flex-grow: 0.1;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #dbf6fd;
+    }
+    .skill-percentage {
+      font-weight: 700;
+      font-size: 1.125rem;
+      min-width: 50px;
+      text-align: right;
+    }
+    .html {
+      color: #e34f26;
+    }
+    .css {
+      color: #264de4;
+    }
+    .javascript {
+      color: #f0db4f;
+      text-shadow: 1px 1px 2px #000;
+    }
+    .mysql {
+      color: #00758f;
+    }
+    .springboot {
+      color: #6db33f;
+    }
+    .hibernate{
+      color: rgb(220, 37, 220);
+    }
+
+    .progress-bar-container {
+      flex-grow: 2;
+      height: 18px;
+      background-color: #1e293b;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: inset 0 1px 4px rgb(0 0 0 / 0.6);
+      margin-right: 1rem;
+      max-width: 70%;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      border-radius: 10px;
+      transition: width 0.6s ease;
+      box-shadow:
+        0 5px 8px rgba(0, 0, 0, 0.5),
+        inset 0 3px 6px rgba(255, 255, 255, 0.7);
+    }
+    .hibernate-fill{
+      background: linear-gradient(90deg, #d31390, #eb41eb);
+    }
+    .html-fill {
+      background: linear-gradient(90deg, #e34f26, #b03a1a);
+    }
+    .css-fill {
+      background: linear-gradient(90deg, #264de4, #1a2f7a);
+    }
+    .javascript-fill {
+      background: linear-gradient(90deg, #f0db4f, #bfae1a);
+    }
+    .mysql-fill {
+      background: linear-gradient(90deg, #00758f, #004f5a);
+    }
+    .springboot-fill {
+      background: linear-gradient(90deg, #6db33f, #4a6f27);
+    }
+    #skills > div.max-w-3xl {
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+e {
+      margin-left: 300px;
+      padding: 30px;
+    }
+    /* Portfolio heading color same as About Me */
+    #portfolio h2 {
+      color: #00efff !important;
+    }
+    /* Portfolio content color white */
+    #portfolio p,
+    #portfolio h3 {
+      color: white !important;
+    }
+    /* Profile border shadow color change */
+    .profile-container img {
+      border-color: transparent;
+      box-shadow: 0 0 20px 6px #23a8c6; /* cyan-400 glow */
+      transition: box-shadow 0.3s ease;
+    }
+    .profile-container:hover img {
+     
+    }
+    /* Contact heading color cyan */
+    #contact h2 {
+      color: #00efff !important;
+    }
+    /* Contact content color white */
+    #contact p,
+    #contact label,
+    #contact input,
+    #contact textarea {
+      color: white !important;
+    }
+    #contact input,
+    #contact textarea {
+      background-color: #0a1a29 !important;
+    }
+    #profile {      
+      
+    }
+    #profile:hover {
+     
+    }
+    
+    .percentage {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-size: 17px;
+      font-weight: 500;
+      color: #00c8ff;
+      transform: translate(-50%, -50%);
+      user-select: none;
+      transition: color 0.4s ease, transform 0.3s ease;
+    }
+    circle.progress-circle {
+      transition: stroke 0.4s ease, stroke-dashoffset 1s linear;
+      stroke: #00c8ff;
+      stroke-dasharray: 251.2;
+      stroke-linecap: round;
+      stroke-dashoffset: 251.2;
+    }
+    .hover-increase {
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      display: inline-block;
+    }
+    .hover-increase:hover {
+      transform: scale(1.1);
+    }
+    .creativity:hover circle.progress-circle {
+      stroke: #ff6f61;
+    }
+    .creativity:hover .percentage {
+      color: #ff6f61;
+      transform: translate(-50%, -50%) scale(1.2);
+    }
+    .communication:hover circle.progress-circle {
+      stroke: #ff69b4;
+    }
+    .communication:hover .percentage {
+      color: #ff69b4;
+      transform: translate(-40%, -40%) scale(1.2);
+    }
+    .problem-solving:hover circle.progress-circle {
+      stroke: #f9d71c;
+    }
+    .problem-solving:hover .percentage {
+      color: #f9d71c;
+      transform: translate(-50%, -50%) scale(1.2);
+    }
+    .teamwork:hover circle.progress-circle {
+      stroke: #34d399;
+    }
+    .teamwork:hover .percentage {
+      color: #34d399;
+      transform: translate(-50%, -50%) scale(1.2);
+    }
+     body {
+      background-color: #0a1a29;
+      color: white;
+      font-family: 'Inter', sans-serif;
+    }
+    .portfolio-title {
+      font-size: 1.5rem; /* text-2xl */
+      font-weight: 700; /* font-bold */
+      color: #00efff;
+      margin-bottom: 1rem; /* mb-4 */
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+      cursor: pointer;
+      padding-bottom: 15px;
+    }
+   
+    .portfolio-card {
+      background-color: #0a1a29;
+      border-radius: 1rem;
+      padding: 2.5rem;
+      box-shadow:
+        0 0 8px 2px rgba(0, 239, 255, 0.3),
+        0 8px 20px rgba(0, 239, 255, 0.15);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      color: white;
+    }
+    .portfolio-card:hover {   
+      box-shadow:
+        0 0 20px 6px rgba(32, 236, 195, 0.999),
+        0 12px 30px rgb(42, 255, 241);
+      transform: translateY(-6px);
+    }
+    .portfolio-card-small {
+      padding: 2.25rem;
+      
+    }
+    .portfolio-image {
+      width: 100%;
+      border-radius: 0.75rem;
+      object-fit: cover;
+      max-height: 150px;
+      box-shadow:
+        0 0 10px 2px rgba(0, 239, 255, 0.4);
+      transition: box-shadow 0.3s ease;
+    }
+  
+    .project-link {
+      margin-top: auto;
+      text-align: right;
+    }
+    .project-link a {
+      color: #00efff;
+      font-weight: 600;
+      text-decoration: underline;
+      transition: color 0.3s ease;
+    }
+    .project-link a:hover {
+      color: #59e9cc;
+    }
+    .profile-img {
+      border-radius: 0; /* square corners */
+      box-shadow: 0 8px 20px rgba(0, 112, 255, 0.6); /* strong blue glow shadow */
+      border: 4px solid #0070ff; /* bright blue border */
+      transition: transform 0.3s ease;
+      width: 220px;
+      height: 340px;
+      object-fit: cover;
+      position: relative;
+      z-index: 10;
+      display: block;
+    }
+    .profile-img:hover {
+      transform: scale(1.20) ;
+      box-shadow: 0 12px 30px rgba(0, 242, 255, 0.9);
+    }
+    @media (max-width: 768px) {
+      .profile-img {
+        width: 240px;
+        height: 200px;
+      }
+    }
+    /* Container for the profile image and corner border */
+    .profile-container {
+      position: relative;
+      margin-top: 2.5rem; /* mt-10 */
+      flex-shrink: 0;
+    }
+     
+    .image {
+  display: block;
+  width: 320px;
+  height: 600px;   /* 🔥 Increased height */
+  object-fit: cover;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  border: 4px solid transparent;
+  z-index: 10;
+  border-radius: 0.5rem;
+}
+
+    .image:hover {
+      box-shadow: 0 0 15px 5px rgba(49, 230, 230, 0.942); /* orange shadow */
+      border-color: rgb(0, 0, 0);
+    }
+     .profile-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+    /* Corners outside the image with increased distance */
+   
+     .corner-top-left {
+      position: absolute;
+      top: -35px;
+      left: -35px;
+      width: 80px;
+      height: 80px;
+      border-top: 8px solid #55ebff51; /* before hover color */
+      border-left: 8px solid #55ebff51;
+      box-sizing: border-box;
+      pointer-events: none;
+      border-radius: 0.25rem;
+      z-index: 20;
+      transition: all 0.3s ease;
+    }
+    .corner-bottom-right {
+      position: absolute;
+      bottom: -35px;
+      right: -35px;
+      width: 80px;
+      height: 80px;
+      border-bottom: 8px solid #55ebff51; /* before hover color */
+      border-right: 8px solid #55ebff51;
+      box-sizing: border-box;
+      pointer-events: none;
+      border-radius: 0.25rem;
+      z-index: 20;
+      transition: all 0.3s ease;
+    }
+    /* Fully increase length and change color on hover of wrapper */
+    .profile-wrapper:hover .corner-bottom-right {
+      width: 100%;
+      height: 100%;
+      bottom: -35px;
+      right: -35px;
+      border-bottom-width: 8px;
+      border-right-width: 8px;
+      border-bottom-color: #00efff; /* after hover color */
+      border-right-color: #00efff;
+      border-radius: 0;
+    }
+    .profile-wrapper:hover .corner-top-left {
+      width: 100%;
+      height: 100%;
+      top: -35px;
+      left: -35px;
+      border-top-width: 8px;
+      border-left-width: 8px;
+      border-top-color: #00efff; /* after hover color */
+      border-left-color: #00efff;
+      border-radius: 0;
+    }
+      .contact-container {
+      background-color: #071422;
+      padding: 2rem;
+      border-radius: 1rem;
+      width: 100%;
+      max-width: 480px;
+      box-shadow: 0 0 15px rgba(0, 239, 255, 0.5);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    .contact-container:hover {
+      box-shadow: 0 0 30px rgba(0, 239, 255, 0.9);
+      transform: scale(1.05);
+    }
+ h2 {
+      color: #00efff;
+      font-weight: 700;
+      font-size: 1.75rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-weight: 600;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.5rem;
+      border: none;
+      background-color: #0a1a29;
+      color: white;
+      font-size: 1rem;
+      margin-bottom: 1.25rem;
+      resize: vertical;
+      box-shadow: inset 0 0 5px rgba(0, 239, 255, 0.3);
+      transition: box-shadow 0.3s ease;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      box-shadow: 0 0 8px 2px #00efff;
+      background-color: #071422;
+    }
+    button {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: #00efff;
+      color: #001b29;
+      font-weight: 700;
+      font-size: 1.125rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00efff;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    button:hover {
+      background-color: #00c8d8;
+      box-shadow: 0 0 20px #00c8d8;
+      transform: scale(1.05);
+    }
+    .status-message {
+      margin-top: 1rem;
+      text-align: center;
+      font-weight: 600;
+      color: #00ffcc;
+      display: none;
+    }
+    .status-error {
+      color: #ff6b6b;
+    }
+ @keyframes moveUpDown {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+    .animate-moveUpDown {
+      animation: moveUpDown 3s ease-in-out infinite;
+    }
+  </style>
+ </head>
+ <body class="bg-[#0a1a29] text-white min-h-screen flex flex-col" >
+  <header class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto w-full  fade">
+   <nav class="flex w-full">
+    <div class="nav-left text-sm md:text-base">
+     <a class="text-white" href="#" style=" font-style: italic;font-size: 1.75rem;">Portfolio.</a>
+    </div>
+    <div class="nav-right text-sm md:text-base ml-[50%]">
+     <a class="hover:underline" href="#home">Home</a>
+     <a class="hover:underline" href="#about">About</a>
+     <a class="hover:underline" href="#skills">Skills</a>
+   
+     <a class="hover:underline" href="#education">Education</a>
+       <a class="hover:underline" href="#contact">Contact</a>
+    </div>
+   </nav>
+  </header>
+  <section class="w-full h-20 bg-[#071421] flex items-center justify-center relative overflow-hidden wave-container fade">
+  <!-- Diamond stars -->
+  <div id="diamond-stars" class="absolute inset-0 z-0"></div>
+
+  <h1 style="border-color: transparent; transition: box-shadow 0.3s ease; color: rgb(13, 243, 247);"
+      class="text-4xl font-bold italic text-[1.75rem] text-[rgb(182,180,153)] transition-shadow duration-300 ease-in-out hover:shadow-lg animate-moveUpDown z-10">
+    Welcome to <span style="color: wheat;">My</span> Portfolio
+  </h1>
+</section>
+
+<script>
+const container = document.getElementById('diamond-stars');
+const starCount = 50; // number of stars
+const colors = ["#ffffff", "#ff0000", "#00ff00", "#0000ff", "#ffff00", "#ff00ff", "#00ffff"]; // 7 colors
+
+for(let i = 0; i < starCount; i++){
+    const star = document.createElement('div');
+    star.classList.add('diamond-star');
+
+    const size = Math.random() * 4 + 2;
+    star.style.width = `${size}px`;
+    star.style.height = `${size}px`;
+    star.style.top = `${Math.random() * 90}%`;
+    star.style.left = `${Math.random() * 95}%`;
+    star.style.background = colors[Math.floor(Math.random() * colors.length)];
+    star.style.animationDelay = `${Math.random() * 3}s`;
+
+    container.appendChild(star);
+}
+</script>
+
+<style>
+#diamond-stars {
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.diamond-star {
+    position: absolute;
+    transform: rotate(45deg);
+    opacity: 0.5;
+    animation: twinkle 1.5s infinite alternate;
+    border-radius: 0;
+}
+
+@keyframes twinkle {
+    0% { opacity: 0.3; transform: rotate(45deg) scale(0.8); }
+    50% { opacity: 1; transform: rotate(45deg) scale(1.2); }
+    100% { opacity: 0.3; transform: rotate(45deg) scale(0.8); }
+}
+</style>
+<br /><br />
+  <main
+    class="flex flex-col md:flex-row items-center justify-between max-w-9xl mx-auto flex-grow px-5 md:px-10 py-10 gap-1 md:gap-0"
+    
+  >
+  
+<section id="home" class="relative w-full h-screen text-white flex flex-col md:flex-row items-center justify-center px-6 md:px-12 py-12 overflow-hidden bg-[#071422] ">
+  
+  <!-- Radiation / animated background -->
+  <div id="radiation-bg" class="absolute inset-0 z-0"></div>
+
+  <!-- Bubble rain container -->
+  <div id="bubble-container" class="absolute inset-0 z-0"></div>
+
+  <!-- Text content -->
+  <div class="relative z-10 max-w-xl space-y-5 md:mr-10 fade">
+    <h3 class="fade">Hello, It's <span style="color: #00efff;">Me</span></h3>
+    <h1 class="text-3xl md:text-4xl font-extrabold leading-tight">Elavarasan R</h1>
+    <h5>I am a <span id="animated-text" class="text-cyan-400 font-bold fade"></span></h5>
+    <p class="text-xs md:text-sm max-w-md fade">
+      I am a passionate fresher eager to build innovative web applications using Java and modern fullstack technologies. Ready to learn, grow, and contribute to impactful projects.
+    </p>
+    <div class="flex space-x-6 mt-2 fade">
+      <a class="social-icon text-cyan-400 text-lg fade" href="https://www.facebook.com/share/1Go9fKpjo7/"><i class="fab fa-facebook-f"></i></a>
+      <a class="social-icon text-cyan-400 text-lg fade" href="https://x.com/elavarasan27978?t=uDt-7DKObIzi1XrGtBpU3Q&s=09"><i class="fab fa-twitter"></i></a>
+      <a class="social-icon text-cyan-400 text-lg fade" href="https://www.instagram.com/yaa.its.elava/"><i class="fab fa-instagram"></i></a>
+      <a class="social-icon text-cyan-400 text-lg fade" href="https://www.linkedin.com/in/elavarasan69/"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+    <a class="btn-box w-max mt-6 fade" href="#about">More About Me</a>
+  </div>
+
+  <!-- Profile image -->
+  <div class="relative z-10 profile-wrapper mt-10 md:mt-0 fade">
+    <img class="image rounded-lg shadow-lg fade" height="615" width="320" src="Photoroom-20251205_233759771 (1).png" />
+    <div class="corner-top-left fade"></div>
+    <div class="corner-bottom-right fade"></div>
+  </div>
+
+  <!-- Scripts for radiation & bubbles -->
+  <script>
+    const radiation = document.getElementById('radiation-bg');
+    const particleCount = 50;
+    for(let i=0;i<particleCount;i++){
+      const p=document.createElement('div');
+      p.classList.add('particle');
+      const size=Math.random()*8+2;
+      p.style.width=`${size}px`;
+      p.style.height=`${size}px`;
+      p.style.left=`${Math.random()*100}%`;
+      p.style.top=`${Math.random()*100}%`;
+      p.style.animationDuration=`${Math.random()*5+5}s`;
+      radiation.appendChild(p);
+    }
+
+    const bubbleContainer = document.getElementById('bubble-container');
+    const bubbleCount = 40;
+    for(let i=0;i<bubbleCount;i++){
+      const b=document.createElement('div');
+      b.classList.add('bubble');
+      const size=Math.random()*12+4;
+      b.style.width=`${size}px`;
+      b.style.height=`${size}px`;
+      b.style.left=`${Math.random()*100}%`;
+      b.style.animationDuration=`${Math.random()*8+4}s`;
+      bubbleContainer.appendChild(b);
+    }
+  </script>
+
+  <style>
+    /* Radiation background */
+    #home{
+       top:0; left:0; width:300%; height:160%;
+    }
+    #radiation-bg {
+      position: absolute;
+      
+      background: radial-gradient(circle at center, #001219 0%, #000a12 100%);
+      z-index:0;
+      overflow:hidden;
+    }
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(0,255,255,0.5);
+      box-shadow: 0 0 10px rgba(0,255,255,0.8);
+      animation: drift linear infinite;
+    }
+    @keyframes drift {
+      0% { transform: translateY(0) translateX(0); opacity:0.6; }
+      50% { transform: translateY(50vh) translateX(20px); opacity:1; }
+      100% { transform: translateY(-50vh) translateX(-20px); opacity:0.6; }
+    }
+
+    /* Bubble rain */
+    #bubble-container { position:absolute; top:0; left:0; width:100%; height:100%; overflow:hidden; z-index:0; }
+    .bubble {
+      position:absolute;
+      border-radius:50%;
+      background: rgba(0,255,255,0.3);
+      animation-name: fall;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+    @keyframes fall {
+      0% { transform: translateY(-10%) translateX(0); opacity:0.5; }
+      50% { transform: translateY(50vh) translateX(15px); opacity:1; }
+      100% { transform: translateY(110%) translateX(-10px); opacity:0; }
+    }
+
+    /* Profile wrapper corners */
+    .profile-wrapper { position: relative; }
+    .corner-top-left, .corner-bottom-right {
+      position: absolute; width: 20px; height: 20px; border: 2px solid #00efff;
+    }
+    .corner-top-left { top:0; left:0; border-right:none; border-bottom:none; }
+    .corner-bottom-right { bottom:0; right:0; border-left:none; border-top:none; }
+  </style>
+</section>
+
+
+  
+
+
+  
+  </main>
+  <script>
+    const texts = [
+      " Java Fullstack Developer",
+      " Backend Developer",
+      " Web Developer",
+      " Software Developer",
+    ];
+    let count = 0;
+    const animatedText = document.getElementById("animated-text");
+    animatedText.textContent = texts[0];
+    setInterval(() => {
+      count = (count + 1) % texts.length;
+      animatedText.textContent = texts[count];
+    }, 2000);
+
+  
+    function animateCircle(container) {
+  const circle = container.querySelector('circle.progress-circle');
+  const percentage = container.querySelector('.percentage');
+  const maxDashOffset = 251.2;
+  const targetPercent = parseInt(percentage.style.getPropertyValue('--percent'), 10);
+
+  let start = null;
+  function step(timestamp) {
+    if (!start) start = timestamp;
+    const elapsed = timestamp - start;
+    const duration = 2000; // 2 seconds
+    const progress = Math.min(elapsed / duration, 1);
+    const currentPercent = Math.floor(progress * targetPercent);
+    const currentOffset = maxDashOffset * (1 - currentPercent / 100);
+
+    circle.style.strokeDashoffset = currentOffset;
+    percentage.textContent = currentPercent + '%';
+
+    if (progress < 1) {
+      requestAnimationFrame(step);
+    }
+  }
+  requestAnimationFrame(step);
+}
+
+window.addEventListener('load', () => {
+  document.querySelectorAll('.hover-increase').forEach(container => {
+    animateCircle(container); // Animate immediately on page load
+  });
+});
+
+
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.hover-increase').forEach(container => {
+        animateCircleOnHover(container);
+      });
+    });
+     src="https://cdn.tailwindcss.com"
+  </script>
+
+  <section
+    style="display: inline; margin-top: 5%; margin-bottom: 5%; padding: 20px; background-color: #02111e; width: 100%; transition: box-shadow 0.3s ease;"
+    id="about"
+    class="max-w-7xl mx-auto px-6 md:px-12 py-12 fade"
+  >
+    <h2 class="text-2xl font-bold mb-4 fade" style="color:#65e7f3; height: 40%; font-style: italic;font-size: 1.75rem;">About Me</h2>
+    <p class="fade">
+     Enthusiastic Java Full Stack Developer (Fresher) with hands-on experience in Core Java, JDBC, and Servlets for
+backend development. Skilled in building robust web applications using Spring Boot, MySQL, and RESTful APIs.
+Proficient in HTML, CSS, JavaScript, and Bootstrap for creating responsive and user-friendly interfaces. Strong un-
+derstanding of Object-Oriented Programming (OOP) principles, Data Structures, and Database Management
+Systems. Knowledgeable in Relational Databases and Web Technologies, with excellent Analytical and Problem-
+Solving Skills. Eager to apply technical expertise, learn emerging technologies, and contribute effectively to innovative
+software development projects
+    </p>
+    <center><div> <a class="btn-box w-max mt-6 fade" href="Elavarasan Resume.pdf" download="">Download resume</a></div></center>
+  </section>
+  <section
+    id="skills"
+   class="max-w-7xl mx-auto px-6 md:px-12 py-24 min-h-[600px]"
+    style="width: 100%"
+  >
+    <h2 class="text-2xl font-bold mb-6  fade" style="color: #00efff  ; font-style: italic;font-size: 1.75rem;">Skills</h2>
+    <h1 class="text-xl font-semibold mb-1 fade" style="color: #e357f0; text-align:center; padding-bottom:30px">Technical skills</h1>
+    <div class="skill-item fade">
+      <img
+        alt="Java logo"
+        class="skill-icon"
+        src="https://cdn-icons-png.flaticon.com/512/226/226777.png"
+      />
+      <span class="skill-name">Java</span>
+      <div class="progress-bar-container" aria-label="Java skill proficiency 100%">
+        <div class="progress-bar-fill" style="width: 95%;"></div>
+      </div>
+      <span class="skill-percentage">80%</span>
+    </div>
+    <div class="max-w-full">
+      <div class="skill-item  fade">
+        <img
+          alt="HTML5 logo"
+          class="skill-icon"
+          src="https://cdn-icons-png.flaticon.com/512/732/732212.png"
+        />
+        <span class="skill-name">HTML</span>
+        <div class="progress-bar-container" aria-label="HTML skill proficiency 100%">
+          <div class="progress-bar-fill html-fill" style="width: 85%"></div>
+        </div>
+        <span class="skill-percentage html">85%</span>
+      </div>
+      <div class="skill-item  fade">
+        <img
+          alt="CSS3 logo"
+          class="skill-icon"
+          src="https://cdn-icons-png.flaticon.com/512/732/732190.png"
+        />
+        <span class="skill-name">CSS</span>
+        <div class="progress-bar-container" aria-label="CSS skill proficiency 100%">
+          <div class="progress-bar-fill css-fill " style="width: 90%"></div>
+        </div>
+        <span class="skill-percentage css">80%</span>
+      </div>
+      <div class="skill-item  fade">
+        <img
+          alt="JavaScript logo"
+          class="skill-icon"
+          src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png"
+        />
+        <span class="skill-name">JavaScript</span>
+        <div
+          class="progress-bar-container"
+          aria-label="JavaScript skill proficiency 100%"
+        >
+          <div class="progress-bar-fill javascript-fill" style="width: 80%"></div>
+        </div>
+        <span class="skill-percentage javascript">70%</span>
+      </div>
+      <div class="skill-item  fade">
+        <img
+          alt="MySQL logo"
+          class="skill-icon"
+          src="https://cdn-icons-png.flaticon.com/512/5968/5968313.png"
+        />
+        <span class="skill-name">MySQL</span>
+        <div class="progress-bar-container" aria-label="MySQL skill proficiency 100%">
+          <div class="progress-bar-fill mysql-fill" style="width: 92%"></div>
+        </div>
+        <span class="skill-percentage mysql">80%</span>
+      </div>
+       <div class="skill-item fade">
+    <img alt="Hibernate logo" class="skill-icon" src="https://images.seeklogo.com/logo-png/27/1/hibernate-logo-png_seeklogo-273522.png" />
+    <span class="skill-name">Hibernate</span>
+    <div class="progress-bar-container"><div class="progress-bar-fill hibernate-fill" style="width: 80%;"></div></div>
+    <span class="skill-percentage hibernate">70%</span>
+  </div>
+      <div class="skill-item  fade">
+        <img
+          alt="Spring Boot logo"
+          class="skill-icon"
+          src="https://dz2cdn1.dzone.com/storage/temp/12434118-spring-boot-logo.png"
+        />
+        <span class="skill-name">Spring Boot</span>
+        <div
+          class="progress-bar-container"
+          aria-label="Spring Boot skill proficiency 100%"
+        >
+          <div class="progress-bar-fill springboot-fill" style="width: 95%"></div>
+        </div>
+        <span class="skill-percentage springboot">75%</span>
+      </div>
+    </div>
+    <section class="max-w-3xl mx-auto "><br /><br /><br />
+      <center>
+        <h1 class="text-xl font-semibold mb-1  fade" style="color: #f057e1; text-align:center; padding-bottom:30px">Professional Skills</h1>
+        <div class="grid grid-cols-2 gap-x-12 gap-y-10 mt-10 max-w-md w-full">
+          <!-- Creativity -->
+          <div class="flex flex-col items-center text-white text-xs font-normal hover-increase creativity fade">
+            <span class="mb-2">Creativity</span>
+            <div class="relative w-20 h-20 progress-bar-container" aria-label="Spring Boot skill proficiency 100%">
+              <svg class="w-20 h-20" viewBox="0 0 100 100" style="">
+                <circle cx="50" cy="50" r="40" fill="none" stroke="#000" stroke-width="5"></circle>
+                <circle class="progress-circle" cx="50" cy="50" r="40" fill="none" stroke-width="5" transform="rotate(-90 50 50)"></circle>
+              </svg>
+              <div class="percentage" style="--percent:80">0%</div>
+            </div>
+          </div>
+          <!-- Communication -->
+          <div class="flex flex-col items-center text-white text-xs font-normal hover-increase communication fade">
+            <span class="mb-2">Communication</span>
+            <div class="relative w-20 h-20  progress-bar-container" aria-label="Spring Boot skill proficiency 100%">
+              <svg class="w-20 h-20" viewBox="0 0 100 100" style="">
+                <circle cx="50" cy="50" r="40" fill="none" stroke="#000" stroke-width="5"></circle>
+                <circle class="progress-circle" cx="50" cy="50" r="40" fill="none" stroke-width="5" transform="rotate(-90 50 50)"></circle>
+              </svg>
+              <div class="percentage" style="--percent:65">2%</div>
+            </div>
+          </div>
+          <!-- Problem Solving -->
+          <div class="flex flex-col items-center text-white text-xs font-normal hover-increase problem-solving  fade">
+            <span class="mb-2">Problem Solving</span>
+            <div class="relative w-20 h-20 progress-bar-container" aria-label="Spring Boot skill proficiency 100%">
+              <svg class="w-20 h-20" viewBox="0 0 100 100" style="">
+                <circle cx="50" cy="50" r="40" fill="none" stroke="#000" stroke-width="5"></circle>
+                <circle class="progress-circle" cx="50" cy="50" r="40" fill="none" stroke-width="5" transform="rotate(-90 50 50)"></circle>
+              </svg>
+              <div class="percentage" style="--percent:70">0%</div>
+            </div>
+          </div>
+          <!-- Teamwork -->
+          <div class="flex flex-col items-center text-white text-xs font-normal hover-increase teamwork  fade">
+            <span class="mb-2">Teamwork</span>
+            <div class="relative w-20 h-20 progress-bar-container" aria-label="Spring Boot skill proficiency 100%">
+              <svg class="w-20 h-20" viewBox="0 0 100 100" style="">
+                <circle cx="50" cy="50" r="40" fill="none" stroke="#000" stroke-width="5"></circle>
+                <circle class="progress-circle" cx="50" cy="50" r="40" fill="none" stroke-width="5" transform="rotate(-90 50 50)"></circle>
+              </svg>
+              <div class="percentage" style="--percent:95">0%</div>
+            </div>
+          </div>
+        </div>
+      </center>
+    </section> <br /><br /><br />
+    <h2 class="portfolio-title  fade" style=" font-style: italic;font-size: 1.75rem;"> Portfolio </h2>
+    <section >
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-7xl">
+        <div class="portfolio-card fade">
+          <img alt="Screenshot of Project 1 website showing portfolio homepage" class="portfolio-image" height="400" src="https://img.freepik.com/free-vector/programmer-working-flat-style_23-2147830559.jpg"    width="600" />
+          <h3 class="font-semibold text-lg mb-1" style="color: #ec4899;">
+            My Project 1
+          </h3>
+          <p class="text-sm">
+            Create my portfolio using HTML, CSS, and JavaScript.
+          </p>
+          <div class="project-link">
+            <a href="https://github.com/elavarasan009/Portfolio.git" rel="noopener noreferrer" target="_blank">
+              View Project
+            </a>
+          </div>
+        </div>
+        <div class="portfolio-card portfolio-card-small fade">
+          <img alt="Screenshot of Project 2 movie ticket website homepage" class="portfolio-image" height="400" src="https://img.freepik.com/free-vector/movie-night-poster-with-realistic-elements_1284-19534.jpg" width="600" />
+          <h3 class="font-semibold text-lg mb-1" style="color: #ec4899;">
+            Project 2
+          </h3>
+          <p class="text-sm">
+            Movie ticket website using Java, Spring Boot, and MySQL.
+          </p>
+          <div class="project-link">
+            <a href="https://github.com/elavarasan009/filmBooking.git" rel="noopener noreferrer" target="_blank">
+              View Project
+            </a>
+          </div>
+        </div>
+        <div class="portfolio-card portfolio-card-small fade">
+          <img alt="Screenshot of Project 3 updated AI chat application interface" class="portfolio-image" height="400" src="https://tse4.mm.bing.net/th/id/OIP.Nfgvn5Mk7yzf0SLBDPuLEAHaEA?pid=Api&P=0&h=220" width="600" />
+          <h3 class="font-semibold text-lg mb-1" style="color: #ec4899;">
+            Project 3
+          </h3>
+          <p class="text-sm">
+            AI summarization chat application using Django, HTML, CSS with AI.
+          </p>
+          <div class="project-link">
+            <a href="https://example.com/project3" rel="noopener noreferrer" target="_blank">
+              View Project
+            </a>
+          </div>
+        </div>
+        <div class="portfolio-card portfolio-card-small fade" >
+          <img alt="Screenshot of Project 3 updated AI chat application interface" class="portfolio-image" height="400" src="https://img.freepik.com/free-vector/medical-healthcare-dashboard_23-2148906472.jpg" width="600" />
+          <h3 class="font-semibold text-lg mb-1" style="color: #ec4899;">
+            Project 4
+          </h3>
+          <p class="text-sm">
+           Hospital Management System  using java, Spring boot ,HTML, CSS ,Mysql.
+          </p>
+          <div class="project-link">
+            <a href="https://github.com/elavarasan009/HospitalManagement.git" rel="noopener noreferrer" target="_blank">
+              View Project
+            </a>
+          </div>
+        </div>
+ <div class="portfolio-card portfolio-card-small fade">
+  <img alt="Screenshot of Bus Reservation Application" class="portfolio-image" height="400" src="https://cdn.vectorstock.com/i/1000x1000/92/22/bus-ticket-online-service-web-design-flat-cartoon-vector-25839222.jpg" width="600" />
+  <h3 class="font-semibold text-lg mb-1" style="color: #ec4899;">
+    Project 5
+  </h3>
+  <p class="text-sm">
+   Bus Reservation using Java
+  </p>
+  <div class="project-link ">
+    <a href="https://github.com/elavarasan009/bus-Resevation-project.git" rel="noopener noreferrer" target="_blank">
+      View Project
+    </a>
+  </div>
+</div>
+
+
+  <div class="portfolio-card portfolio-card-small fade">
+          <img alt="Screenshot of Project 2 movie ticket website homepage" class="portfolio-image" height="400" src="https://img.freepik.com/premium-vector/artificial-intelligence-assistant-businessman-hands-holds-job-document-ai-robots-are-automati_1146857-14.jpg" width="600" />
+          <h3 class="font-semibold text-lg mb-1" style="color: #ec4899;">
+            Project 
+          </h3>
+          <p class="text-sm">
+            Job Ai Assisstant  using Java, Spring Boot, and MySQL ,OpenAI,Html,Css,JavaScript</Html>.
+          </p>
+          <div class="project-link">
+            <a href="https://github.com/elavarasan009/filmBooking.git" rel="noopener noreferrer" target="_blank">
+              View Project
+            </a>
+          </div>
+        </div>
+
+        </div>
+      </div>
+    </section>
+  </section>
+  <style>#education {
+  max-width: 7xl;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+  background-color: #071422;
+  color: white;
+}
+
+#education h2 {
+  color: #00efff;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.education-item {
+  background-color: #0a1a29;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 10px rgba(0, 239, 255, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.education-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(0, 239, 255, 0.7);
+}
+
+.education-item h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.education-item p {
+  font-size: 1rem;
+  color: #dbf6fd;
+}
+</style>
+ <section
+  id="education"
+  class="max-w-7xl mx-auto px-6 md:px-12 py-12 bg-[#071422] mb-12"
+  style="width: 100%"
+>
+
+    <h2 class="text-2xl font-bold mb-4  fade" style="color: #00efff; font-style: italic;font-size: 1.75rem;">Education</h2><br /><br /><br />
+    <div class="space-y-6 max-w-3xl mx-auto text-white">
+
+       <div class="bg-[#0f1f33] p-4 rounded-lg shadow-lg portfolio-card portfolio-card-small fade" style="border-radius:18px">
+        <h3 class="text-xl font-semibold mb-1" style="color: #ec4899;">Computer Science </h3>
+        <p class="text-sm text-sky-400 mb-2">2019 - 2021</p>
+        <p>
+         M CT RM Ramanathan Chettiar Higher Secondary School , Kulipirai.
+        </p>
+      </div>
+
+
+
+
+      <div class="bg-[#0f1f33] p-4 rounded-lg shadow-lg portfolio-card portfolio-card-small fade" style="border-radius:18px">
+        <h3 class="text-xl font-semibold mb-1" style="color: #ec4899;">Computer Science and Engineering</h3>
+        <p class="text-sm text-sky-400 mb-2">2021 - 2025</p>
+        <p>
+          M.I.E.T Engineering College ,Trichy-07.
+        </p>
+      </div>
+      <div class="bg-[#0f1f33] p-4 rounded-lg shadow-lg portfolio-card portfolio-card-small fade" style="border-radius:18px">
+        <h3 class="text-xl font-semibold mb-1" style="color: #ec4899;">Web Development Internship</h3>
+        <p class="text-sm text-sky-400 mb-2">2024 (1 month internship)</p>
+        <p>
+          Developed an e-commerce website during a one-month internship, utilizing modern web technologies and best practices.
+        </p>
+      </div>
+      <div class="bg-[#0f1f33] p-4 rounded-lg shadow-lg portfolio-card portfolio-card-small fade" style="border-radius:18px">
+        <h3 class="text-xl font-semibold mb-1" style="color: #ec4899;">Java Fullstack  Development</h3>
+        <p class="text-sm text-sky-400 mb-2">2025 (3 months internship)</p>
+        <p>
+          Intensive training and hands-on internship focused on Java,html,css,spring MVC,Mysql,Hibernate, Spring Boot, and fullstack java development.
+        </p>
+      </div>
+    </div>
+<section 
+  id="contact" 
+  class="fade bg-gradient-to-r from-[#0a1a29] to-[#071422] py-24 px-6 md:px-20 rounded-2xl overflow-hidden shadow-xl  mb-12 fade"
+>
+
+  <!-- Rain bubbles -->
+  <div class="bubble rain"></div>
+  <div class="bubble rain"></div>
+  <div class="bubble rain"></div>
+  <div class="bubble rain"></div>
+  <div class="bubble rain"></div>
+  <div class="bubble rain"></div>
+  <div class="bubble rain"></div>
+  <div class="bubble rain"></div>
+  <div class="bubble rain"></div>
+  <div class="bubble rain"></div>
+
+  <!-- Header -->
+  <div class="text-center mb-16 relative z-10 fade">
+    <h2 class="text-4xl md:text-5xl font-bold text-white fade">
+      <span id="typed-text" class="text-cyan-400"></span>
+      <span class="blink">|</span>
+    </h2>
+    <p class="text-gray-300 mt-4 max-w-2xl mx-auto fade">Connect with me for projects, collaboration, or just to say hello!</p>
+  </div>
+
+  <!-- Contact Cards -->
+  <!-- Contact Cards -->
+<div class="grid md:grid-cols-3 gap-8 text-white relative z-10 fade">
+
+  <!-- Email -->
+  <a href="mailto:mselava07@gmail.com" class=" fade contact-card block p-6 rounded-xl bg-[#0f1f33] hover:bg-[#112544] transition-all text-center cursor-pointer">
+    <i class="fas fa-envelope text-3xl mb-3 fade"></i>
+    <h3 class="text-xl font-semibold mb-2">Email</h3>
+    <p class="text-gray-300">mselava07@gmail.com</p>
+  </a>
+
+  <!-- Phone -->
+  <a href="tel:+917695949974" class="fade contact-card block p-6 rounded-xl bg-[#0f1f33] hover:bg-[#112544] transition-all text-center cursor-pointer">
+    <i class="fas fa-phone text-3xl mb-3 fade"></i>
+    <h3 class="text-xl font-semibold mb-2">Phone</h3>
+    <p class="text-gray-300">+91 7695949974</p>
+  </a>
+
+  <!-- Location -->
+  <a href="https://maps.google.com/?q=Ponnamaravathi Pudukkottai" target="_blank" class=" fade contact-card block p-6 rounded-xl bg-[#0f1f33] hover:bg-[#112544] transition-all text-center cursor-pointer">
+    <i class="fas fa-map-marker-alt text-3xl mb-3 fade"></i>
+    <h3 class="text-xl font-semibold mb-2">Location</h3>
+    <p class="text-gray-300">Ponnamaravathi, Pudukkottai District, India</p>
+  </a>
+
+</div>
+
+<style>
+  .contact-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 16px;
+    text-align: center;
+    cursor: pointer;          /* clickable feel */
+    transition: 0.3s;
+  }
+
+  .contact-card:hover {
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .contact-card:active {
+    transform: scale(0.97);   /* click effect */
+  }
+</style>
+
+  <!-- Map -->
+  <div class="map-container w-full h-[500px] overflow-hidden shadow-lg mt-16 rounded-2xl relative z-10 fade">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.123456789!2d78.520123!3d10.550123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baaf1234567890%3A0x0!2sPonnamaravathi%2C%20Pudukottai%20District%2C%20Tamil%20Nadu%2C%20India!5e0!3m2!1sen!2sin!4v1700000000002!5m2!1sen!2sin"
+      class="w-full h-full border-0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+</section>
+
+<style>
+/* ---------------- Typing Animation ---------------- */
+#typed-text {
+  display:inline-block; 
+  overflow:hidden; 
+  white-space:nowrap; 
+  border-right:2px solid; 
+  animation:typing 2s steps(12,end) forwards;
+}
+@keyframes typing { 0% { width:0; } 100% { width:12ch; } }
+.blink { animation: blink 0.7s step-start infinite; }
+@keyframes blink { 0%,50%,100%{opacity:1;}25%,75%{opacity:0;} }
+
+/* ---------------- Rain Bubbles ---------------- */
+.bubble.rain {
+  position:absolute;
+  top:-50px;
+  width:15px;
+  height:15px;
+  background: rgba(0, 255, 255, 0.986);
+  border-radius:50%;
+  animation:fall linear infinite;
+  z-index:5;
+}
+
+/* Random positions & speeds */
+.bubble.rain:nth-child(1) { left:5%; animation-duration:6s; width:12px; height:12px; }
+.bubble.rain:nth-child(2) { left:20%; animation-duration:8s; width:18px; height:18px; }
+.bubble.rain:nth-child(3) { left:35%; animation-duration:5s; width:10px; height:10px; }
+.bubble.rain:nth-child(4) { left:50%; animation-duration:7s; width:15px; height:15px; }
+.bubble.rain:nth-child(5) { left:65%; animation-duration:6.5s; width:14px; height:14px; }
+.bubble.rain:nth-child(6) { left:75%; animation-duration:9s; width:16px; height:16px; }
+.bubble.rain:nth-child(7) { left:85%; animation-duration:5.5s; width:12px; height:12px; }
+.bubble.rain:nth-child(8) { left:10%; animation-duration:8.5s; width:18px; height:18px; }
+.bubble.rain:nth-child(9) { left:40%; animation-duration:6.5s; width:14px; height:14px; }
+.bubble.rain:nth-child(10){ left:90%; animation-duration:7.5s; width:15px; height:15px; }
+
+@keyframes fall {
+  0% { transform:translateY(0) rotate(0deg); opacity:0.6; }
+  50%{ opacity:0.8; }
+  100%{ transform:translateY(100vh) rotate(360deg); opacity:0; }
+}
+
+/* ---------------- Contact Cards ---------------- */
+.contact-card {
+  background-color:#112233;
+  padding:1.5rem;
+  border-radius:1rem;
+  box-shadow:0 10px 20px rgba(0,0,0,0.3);
+  transition: transform 0.5s ease, box-shadow 0.5s ease, background-color 0.5s ease;
+  text-align:center;
+  cursor:pointer;
+  opacity:0;
+  transform:translateY(40px);
+}
+.contact-card:hover {
+  transform:translateY(-15px) scale(1.15);
+  background-color:#1a2a3a;
+  box-shadow:0 40px 90px rgba(0,255,255,0.7);
+}
+.contact-card i {
+  font-size:3rem;
+  color:#00ffff;
+  margin-bottom:1rem;
+  transition: transform 0.4s ease;
+}
+.contact-card:hover i { transform:scale(1.2); }
+.contact-card:active {
+  transform:translateY(-5px) scale(1.1);
+  box-shadow:0 25px 50px rgba(0,255,255,0.5);
+}
+
+/* ------------- Map ---------------- */
+.map-container {
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  opacity:0;
+  transform:translateY(40px);
+}
+.map-container:hover {
+  transform:scale(1.03);
+  box-shadow:0 25px 70px rgba(0,0,0,0.5);
+}
+
+/* ---------------- Fade-in on scroll ---------------- */
+.visible {
+  opacity:1 !important;
+  transform:translateY(0) !important;
+  transition: all 0.8s ease-out;
+}
+</style>
+
+<script>
+// Typing text
+document.getElementById("typed-text").textContent = "Get in Touch!";
+
+// Fade-in on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold:0.2 });
+
+document.querySelectorAll('.contact-card, .map-container').forEach(el => observer.observe(el));
+
+
+</script>
+
+<style>
+  .fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform; /* GPU optimized */
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger effect for multiple children */
+.fade > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade.show > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade.show > *:nth-child(1) { transition-delay: 0.1s; }
+.fade.show > *:nth-child(2) { transition-delay: 0.2s; }
+.fade.show > *:nth-child(3) { transition-delay: 0.3s; }
+
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const sections = document.querySelectorAll(".fade");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add("show"); // fade-in
+      } else {
+        entry.target.classList.remove("show"); // fade-out
+      }
+    });
+  }, { threshold: 0.2 }); // 20% visible triggers fade
+
+  sections.forEach(section => observer.observe(section));
+});
+
+</script>
+
+
+
+
+ </body>
+</html>
